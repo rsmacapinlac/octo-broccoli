@@ -45,10 +45,20 @@ local newsletters = account.INBOX:is_seen() * (
                     )
 newsletters:move_messages(account['zzz - Automated/Newsletters'])
 
+-- Just move these newsletters, don't wait to read them
+newsletters = account.INBOX:contain_from('no-reply@marketing.zerolongevity.com')
+newsletters:move_messages(account['zzz - Automated/Newsletters'])
+
 -- Homelab: Yukari
 local yukari = account.INBOX:contain_subject('[YUKARI] A new DSM update has been detected on yukari') +
                account.INBOX:contain_subject('[YUKARI] Packages on yukari are out-of-date')
 yukari:move_messages(account['zzz - Automation/Homelab - Notifications'])
+
+-- Homelab: Bien's bottie
+local bottie = account.INBOX:contain_from('support@boogienet.com') *
+               account.INBOX:contain_to('	bmatute@rennie.com') *
+               account.INBOX:contain_to('ritchie@macapinlac.com')
+bottie:move_messages(account['zzz - Automation/Bien\'s Bottie'])
 
 -- BC Hydro and Fortis
 local bchydro = account.INBOX:is_seen() *
@@ -99,6 +109,12 @@ local shopping = account.INBOX:contain_to('ritchie+promotions@macapinlac.com') +
                  )
 shopping:move_messages(account['zzz - Automated/Shopping'])
 
+shopping = account.INBOX:contain_from('EXTRAS@infomail.landmarkcinemas.com')
+shopping:move_messages(account['zzz - Automated/Promotions'])
+
+shopping = account.INBOX:contain_from('enews@e.dji.com')
+shopping:move_messages(account['zzz - Automated/Promotions'])
+
 -- Village at Walker Lakes related
 -- Pagnihotri@kdmmgmt.ca
 local villagewl = account.INBOX:contain_from('Pagnihotri@kdmmgmt.ca')
@@ -129,6 +145,10 @@ jobs:move_messages(account['zzz - Automated/Jobs'])
 ritchieplex = account.INBOX:contain_from('ritchieplex@macapinlac.network')
 ritchieplex:move_messages(account['zzz - Automated/RitchiePlex'])
 
+-- Receipts
+local receipts = account.INBOX:contain_from('sunlife@info.sunlife.com') *
+                 account.INBOX:contain_subject('Your recent group benefits claim is processed')
+receipts:move_messages(account['Receipts and Invoices'])
 
 -- Ugh, just delete it!
 ugh = account.INBOX:contain_from('e-service@acmsmail.china-airlines.com')
