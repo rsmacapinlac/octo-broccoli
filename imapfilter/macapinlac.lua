@@ -41,7 +41,8 @@ local newsletters = account.INBOX:is_seen() * (
                       account.INBOX:contain_to('ritchie+newsletters@macapinlac.com') +
                       account.INBOX:contain_from('no-reply@marketing.zerolongevity.com') +
                       account.INBOX:contain_from('carl@carlpullein.com') +
-                      account.INBOX:contain_from('crew@morningbrew.com')
+                      account.INBOX:contain_from('crew@morningbrew.com') +
+                      account.INBOX:contain_from('info@bcaamail.com')
                     )
 newsletters:move_messages(account['zzz - Automated/Newsletters'])
 
@@ -106,7 +107,10 @@ local shopping = account.INBOX:contain_to('ritchie+promotions@macapinlac.com') +
                  account.INBOX:contain_from('latest@email.oqspecs.com') + (
                    account.INBOX:contain_to('family@macapinlac.com') +
                    account.INBOX:contain_subject('We found price drops for an item you Droplisted')
-                 )
+                 ) +
+                 -- Bailey Nelson
+                 account.INBOX:contain_from('hello@baileynelson.com')
+
 shopping:move_messages(account['zzz - Automated/Shopping'])
 
 shopping = account.INBOX:contain_from('EXTRAS@infomail.landmarkcinemas.com')
