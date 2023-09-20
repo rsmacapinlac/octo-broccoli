@@ -14,13 +14,13 @@ options.expunge = true
 local password = get_imap_password("BOOGIENET_IMAP_PASSWORD",
                                    ".rsmacapinlac@boogienet.com",
                                    "email/boogienet.com")
-
 local account = IMAP {
     server = 'mail.hostedemail.com',
     username = 'rsmacapinlac@boogienet.com',
     -- for some reason, locally, the pipe_from doesn't work
-    -- pass emai/boogienet.com > ~/.rsmacapinlac@boogienet.com
-    password = password
+    -- pass email/boogienet.com > ~/.rsmacapinlac@boogienet.com
+    password = password,
+    ssl = "tls1"
 }
 
 account.INBOX:check_status()
