@@ -43,7 +43,8 @@ local newsletters = account.INBOX:is_seen() * (
                       account.INBOX:contain_from('carl@carlpullein.com') +
                       account.INBOX:contain_from('crew@morningbrew.com') +
                       account.INBOX:contain_from('info@bcaamail.com') +
-                      account.INBOX:contain_from('notifications@e-news.wealthsimple.com')
+                      account.INBOX:contain_from('notifications@e-news.wealthsimple.com') +
+                      account.INBOX:contain_from('team@news.wakingup.com')
                     )
 newsletters:move_messages(account['zzz - Automated/Newsletters'])
 
@@ -58,7 +59,7 @@ yukari:move_messages(account['zzz - Automation/Homelab - Notifications'])
 
 -- Homelab: Bien's bottie
 local bottie = account.INBOX:contain_from('ritchie@macapinlac.com') *
-               account.INBOX:contain_to('	bmatute@rennie.com') *
+               account.INBOX:contain_to('bmatute@rennie.com') *
                account.INBOX:contain_to('ritchie@macapinlac.com')
 bottie:move_messages(account['zzz - Automation/Bien\'s Bottie'])
 
@@ -76,10 +77,11 @@ local td  = account.INBOX:is_seen() *
             account.INBOX:contain_from('noreply@td.com')
 td:move_messages(account['zzz - 3236 East 6th/TD Canada Trust'])
 
--- ESS School announcements
+-- Notre Dame School announcements
 -- Move after they've been read
 local nd_school_announcements = account.INBOX:is_seen() *
                                  (
+                                   account.INBOX:contain_from('webmaster@myndrs.com') +
                                    account.INBOX:contain_from('scirillo@ndrs.org')
                                  )
 nd_school_announcements:move_messages(account['Notre Dame/School Announcements'])
