@@ -44,7 +44,8 @@ local newsletters = account.INBOX:is_seen() * (
                       account.INBOX:contain_from('crew@morningbrew.com') +
                       account.INBOX:contain_from('info@bcaamail.com') +
                       account.INBOX:contain_from('notifications@e-news.wealthsimple.com') +
-                      account.INBOX:contain_from('team@news.wakingup.com')
+                      account.INBOX:contain_from('team@news.wakingup.com') +
+                      account.INBOX:contain_from('info@enews.icbc.com')
                     )
 newsletters:move_messages(account['zzz - Automated/Newsletters'])
 
