@@ -162,9 +162,11 @@ ritchieplex = account.INBOX:contain_from('ritchieplex@macapinlac.network')
 ritchieplex:move_messages(account['zzz - Automated/RitchiePlex'])
 
 -- Receipts
-local receipts = account.INBOX:contain_from('sunlife@info.sunlife.com') *
-                 account.INBOX:contain_subject('Your recent group benefits claim is processed')
-receipts:move_messages(account['Receipts and Invoices'])
+local receipts = account.INBOX:contain_from('sunlife@info.sunlife.com') * (
+                   account.INBOX:contain_subject('Your recent group benefits claim is processed') +
+                   account.INBOX:contain_subject('Your group benefits claim has been received')
+                 )
+receipts:move_messages(account['zzzz - Saved Emails/Sunlife'])
 
 -- Ugh, just delete it!
 ugh = account.INBOX:contain_from('e-service@acmsmail.china-airlines.com')
