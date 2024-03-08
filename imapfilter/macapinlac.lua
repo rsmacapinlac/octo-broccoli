@@ -45,7 +45,8 @@ local newsletters = account.INBOX:is_seen() * (
                       account.INBOX:contain_from('info@bcaamail.com') +
                       account.INBOX:contain_from('notifications@e-news.wealthsimple.com') +
                       account.INBOX:contain_from('team@news.wakingup.com') +
-                      account.INBOX:contain_from('info@enews.icbc.com')
+                      account.INBOX:contain_from('info@enews.icbc.com') +
+                      account.INBOX:contain_from('no-reply@myair.resmed.com')
                     )
 newsletters:move_messages(account['zzz - Automated/Newsletters'])
 
@@ -167,6 +168,12 @@ local receipts = account.INBOX:contain_from('sunlife@info.sunlife.com') * (
                    account.INBOX:contain_subject('Your group benefits claim has been received')
                  )
 receipts:move_messages(account['zzzz - Saved Emails/Sunlife'])
+
+-- TransUnion Credit Monitoring
+local transunion = account.INBOX:contain_from('DoNotReply@transunion.com') * (
+                     account.INBOX:contain_subject('Monthly Credit Alert Summary')
+                   )
+transunion:move_messages(account['zzzz - Saved Emails/TransUnion'])
 
 -- Ugh, just delete it!
 ugh = account.INBOX:contain_from('e-service@acmsmail.china-airlines.com')
