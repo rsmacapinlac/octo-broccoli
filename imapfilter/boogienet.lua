@@ -29,6 +29,12 @@ account.INBOX:check_status()
 ----  Rules     --
 ------------------
 
+local newsletters = account.INBOX:is_seen() * (
+                      account.INBOX:contain_from('community@invoiceninja.com')
+                    )
+newsletters:move_messages(account['zzz - Automated/Newsletters'])
+
+
 local whois = account.INBOX:contain_subject('WHOIS Data Confirmation for')
 whois:move_messages(account['zzz - Automated.WhoIs'])
 

@@ -46,7 +46,8 @@ local newsletters = account.INBOX:is_seen() * (
                       account.INBOX:contain_from('notifications@e-news.wealthsimple.com') +
                       account.INBOX:contain_from('team@news.wakingup.com') +
                       account.INBOX:contain_from('info@enews.icbc.com') +
-                      account.INBOX:contain_from('no-reply@myair.resmed.com')
+                      account.INBOX:contain_from('no-reply@myair.resmed.com') +
+                      account.INBOX:contain_from('hello@tailscale.com')
                     )
 newsletters:move_messages(account['zzz - Automated/Newsletters'])
 
@@ -58,6 +59,10 @@ newsletters:move_messages(account['zzz - Automated/Newsletters'])
 local yukari = account.INBOX:contain_subject('[YUKARI] A new DSM update has been detected on yukari') +
                account.INBOX:contain_subject('[YUKARI] Packages on yukari are out-of-date')
 yukari:move_messages(account['zzz - Automation/Homelab - Notifications'])
+
+-- Homelab: Overseer
+local overseer = account.INBOX:contain_from('homelab@macapinlac.network') * account.INBOX:contain_subject('Movie Request Now Available')
+overseer:move_messages(account['zzz - Automated/RitchiePlex'])
 
 -- Homelab: Bien's bottie
 local bottie = account.INBOX:contain_from('ritchie@macapinlac.com') *
